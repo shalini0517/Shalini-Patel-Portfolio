@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Shalini Patel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .fade-in { animation: fadeIn 1.2s ease-in-out; }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-200 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-white bg-opacity-70 backdrop-blur-xl shadow-sm">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-semibold text-gray-900 tracking-tight">My Portfolio</h1>
+      <ul class="flex space-x-8 font-medium text-gray-700">
+        <li><a href="index.html" class="hover:text-blue-700 transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-blue-700 transition">About</a></li>
+        <li><a href="skills.html" class="hover:text-blue-700 transition">Skills</a></li>
+        <li><a href="projects.html" class="hover:text-blue-700 transition">Projects</a></li>
+        <li><a href="contact.html" class="text-blue-700 font-semibold">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="flex-1 pt-28 pb-10 fade-in">
+    <div class="max-w-4xl mx-auto bg-white bg-opacity-60 backdrop-blur-xl shadow-lg rounded-3xl p-10">
+
+      <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
+
+      <form id="contactForm" class="max-w-xl mx-auto grid grid-cols-1 gap-6">
+        <input type="text" id="name" placeholder="Your Name" required
+               class="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        <input type="email" id="email" placeholder="Your Email" required
+               class="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        <textarea id="message" placeholder="Your Message" rows="5" required
+               class="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+        <button type="submit" class="bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 transition font-semibold">
+          Send Message
+        </button>
+        <p id="formMessage" class="text-green-600 font-medium text-center hidden mt-2">Your message has been sent!</p>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-6 shadow-inner mt-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-gray-700 text-lg font-medium">Connect with me</p>
+      <div class="flex justify-center space-x-10 mt-3">
+        <a href="#" class="hover:opacity-80 transition">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-7 h-7" />
+        </a>
+        <a href="#" class="hover:opacity-80 transition">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-7 h-7" />
+        </a>
+        <a href="#" class="hover:opacity-80 transition">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="w-7 h-7" />
+        </a>
+      </div>
+      <p class="text-gray-500 text-sm mt-4">
+        © 2025 Shalini Patel. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Form Submission Script -->
+  <script>
+    const form = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Gather form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+      };
+
+      // Send form data using fetch (you can replace URL with your backend)
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData)
+      })
+      .then(() => {
+        formMessage.classList.remove('hidden');
+        form.reset(); // Clear the form
+      })
+      .catch((error) => {
+        formMessage.textContent = "There was an error sending your message.";
+        formMessage.classList.remove('hidden');
+        console.error(error);
+      });
+    });
+  </script>
+
+</body>
+</html>
