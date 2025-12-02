@@ -36,24 +36,17 @@
 
       <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
 
-      <form 
-        name="contact" 
-        method="POST" 
-        data-netlify="true" 
-        class="max-w-xl mx-auto grid grid-cols-1 gap-6"
-      >
-        <!-- Hidden input required by Netlify -->
-        <input type="hidden" name="form-name" value="contact" />
-      
-        <input type="text" name="name" placeholder="Your Name" required
+      <form id="contactForm" class="max-w-xl mx-auto grid grid-cols-1 gap-6">
+        <input type="text" id="name" placeholder="Your Name" required
                class="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <input type="email" name="email" placeholder="Your Email" required
+        <input type="email" id="email" placeholder="Your Email" required
                class="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <textarea name="message" placeholder="Your Message" rows="5" required
+        <textarea id="message" placeholder="Your Message" rows="5" required
                class="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
         <button type="submit" class="bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 transition font-semibold">
           Send Message
         </button>
+        <p id="formMessage" class="text-green-600 font-medium text-center hidden mt-2">Your message has been sent!</p>
       </form>
 
     </div>
