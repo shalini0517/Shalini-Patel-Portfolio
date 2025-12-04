@@ -7,93 +7,113 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-    .fade-in { animation: fadeIn 1.2s ease-in-out; }
+    .animate-fadeUp { animation: fadeUp 0.85s ease-out; }
+
+    .bg-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      z-index: -1;
+    }
+
+    .glow-blue { background: #6366f1; top: 10%; left: 10%; }
+    .glow-pink { background: #ec4899; bottom: 10%; right: 10%; }
+
+    .project-card { transition: .3s; }
+    .project-card:hover { transform: translateY(-6px); }
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-200 text-gray-800">
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-gray-100 to-gray-300 text-gray-800">
 
-  <!-- Navbar -->
-  <nav class="fixed top-0 w-full z-50 bg-white bg-opacity-70 backdrop-blur-xl shadow-sm">
-    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-semibold text-gray-900 tracking-tight"></h1>
-      <ul class="flex space-x-8 font-medium text-gray-700">
-        <li><a href="index.html" class="hover:text-blue-700 transition">Home</a></li>
-        <li><a href="about.html" class="hover:text-blue-700 transition">About</a></li>
-        <li><a href="skills.html" class="hover:text-blue-700 transition">Skills</a></li>
-        <li><a href="projects.html" class="text-blue-700 font-semibold">Projects</a></li>
-        <li><a href="contact.html" class="hover:text-blue-700 transition">Contact</a></li>
+  <!-- Background Glows -->
+  <div class="bg-glow glow-blue"></div>
+  <div class="bg-glow glow-pink"></div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-md">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
+      <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"></h1>
+
+      <ul class="flex space-x-6 font-medium">
+        <li><a href="index.html" class="hover:text-purple-600 transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-purple-600 transition">About</a></li>
+        <li><a href="skills.html" class="hover:text-purple-600 transition">Skills</a></li>
+        <li><a href="projects.html" class="text-purple-600 font-semibold">Projects</a></li>
+        <li><a href="contact.html" class="hover:text-purple-600 transition">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Projects Section -->
-  <section class="flex-1 pt-28 pb-10 fade-in">
-    <div class="max-w-5xl mx-auto bg-white bg-opacity-60 backdrop-blur-xl shadow-lg rounded-3xl p-10">
+  <!-- PROJECTS SECTION -->
+  <section class="flex-1 pt-28 pb-10 px-4 animate-fadeUp">
+    <div class="bg-white/20 border border-white/30 backdrop-blur-xl rounded-3xl shadow-xl max-w-5xl mx-auto p-10">
 
-      <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text">
+        Projects
+      </h2>
 
-      <!-- Project Cards -->
+      <!-- Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
         <!-- Project 1 -->
-
-        <div class="bg-gray-100 p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-bold mb-3"> Confidential - Python Backend Developer</h3>
+        <div class="project-card bg-white/50 p-6 rounded-2xl shadow hover:shadow-xl transition border border-white/40">
+          <h3 class="text-xl font-bold mb-3 text-purple-700">Confidential - Python Backend Developer</h3>
           <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
             <li>Developed Python APIs for frontend integration with scalable and efficient data flow.</li>
-            <li>Built Metabase dashboards from scratch for analytics and reporting.</li>
-            <li>Implemented Prometheus monitoring and Grafana dashboards for real-time metrics.</li>
-            <li>Collaborated with frontend teams to integrate APIs seamlessly and optimize overall application performance.</li>
+            <li>Built Metabase dashboards for analytics and reporting.</li>
+            <li>Implemented Prometheus & Grafana for real-time monitoring.</li>
+            <li>Collaborated with frontend teams for smooth integrations.</li>
           </ul>
         </div>
 
-        <div class="bg-gray-100 p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-bold mb-3"> Confidential - Full Stack Engineer</h3>
+        <!-- Project 1B -->
+        <div class="project-card bg-white/50 p-6 rounded-2xl shadow hover:shadow-xl transition border border-white/40">
+          <h3 class="text-xl font-bold mb-3 text-purple-700">Confidential - Full Stack Engineer</h3>
           <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
-            <li>Stabilized large-scale infrastructure to handle billions of records efficiently.</li>
-            <li>Optimized PostgreSQL with table partitioning, indexing, and automated archival.</li>
-            <li>Implemented zero-downtime schema migrations and production-safe deployments.</li>
-            <li>Monitored and tuned database performance using real-time metrics.</li>
-            <li>Frontend contributions with React and Next.js for dynamic interfaces and SSR.</li>
-            <li>Collaborated across teams to ensure full-stack performance and reliability.</li>
+            <li>Stabilized large-scale infra for billions of records.</li>
+            <li>Optimized PostgreSQL with partitioning & indexing.</li>
+            <li>Implemented zero-downtime schema migrations.</li>
+            <li>Monitored DB performance with real-time metrics.</li>
+            <li>Frontend contributions with React & Next.js.</li>
           </ul>
         </div>
 
         <!-- Project 2 -->
-        <div class="bg-gray-100 p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-bold mb-3">Confidential - Full Stack Developer</h3>
+        <div class="project-card bg-white/50 p-6 rounded-2xl shadow hover:shadow-xl transition border border-white/40">
+          <h3 class="text-xl font-bold mb-3 text-purple-700">Confidential - Full Stack Developer</h3>
           <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
-            <li>Developed a financial aid solution for students using Ruby on Rails and React JS.</li>
-            <li>Implemented loan application, repayment, and management features.</li>
-            <li>Contributed to effective pricing strategy development.</li>
-            <li>Acquired cross-functional collaboration skills.</li>
-            <li>Leveraged Growthbook for A/B testing to drive project innovation.</li>
+            <li>Developed financial aid solution using Rails & React.</li>
+            <li>Implemented loan application and management features.</li>
+            <li>Contributed to pricing strategy development.</li>
+            <li>Used Growthbook for A/B testing and feature flags.</li>
           </ul>
         </div>
 
         <!-- Project 3 -->
-        <div class="bg-gray-100 p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-bold mb-3">Hi Doggy - ROR Developer</h3>
+        <div class="project-card bg-white/50 p-6 rounded-2xl shadow hover:shadow-xl transition border border-white/40">
+          <h3 class="text-xl font-bold mb-3 text-purple-700">Hi Doggy - ROR Developer</h3>
           <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
-            <li>Built a pet care and wellness platform integrating third-party services like Stripe.</li>
-            <li>Developed RESTful APIs and admin interface from scratch.</li>
-            <li>Implemented KYC integration using Persona.</li>
-            <li>Worked on real-time chat and notifications using Action Cable.</li>
-            <li>Contributed significantly over 1.5 years as backend developer.</li>
+            <li>Built pet care platform integrating Stripe payments.</li>
+            <li>Developed REST APIs & admin panel from scratch.</li>
+            <li>Implemented KYC via Persona.</li>
+            <li>Real-time chat & notifications using Action Cable.</li>
           </ul>
         </div>
 
         <!-- Project 4 -->
-        <div class="bg-gray-100 p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-bold mb-3">BuyerProperty - Full Stack Developer</h3>
+        <div class="project-card bg-white/50 p-6 rounded-2xl shadow hover:shadow-xl transition border border-white/40">
+          <h3 class="text-xl font-bold mb-3 text-purple-700">BuyerProperty - Full Stack Developer</h3>
           <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
-            <li>Developed frontend with HTML, CSS, and JavaScript for property sales platform.</li>
-            <li>Maintained and enhanced admin user interfaces for platform management.</li>
+            <li>Developed frontend UI with HTML, CSS & JavaScript.</li>
+            <li>Improved and maintained admin dashboard.</li>
           </ul>
         </div>
 
@@ -101,10 +121,11 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-white py-6 shadow-inner mt-4">
+  <!-- FOOTER -->
+  <footer class="bg-white/80 py-6 shadow-inner backdrop-blur-lg mt-auto">
     <div class="max-w-4xl mx-auto text-center">
       <p class="text-gray-700 text-lg font-medium">Connect with me</p>
+
       <div class="flex justify-center space-x-10 mt-3">
         <a href="https://github.com/shalini0517" class="hover:opacity-80 transition">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-7 h-7" />
@@ -116,6 +137,7 @@
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="w-7 h-7" />
         </a>
       </div>
+
       <p class="text-gray-500 text-sm mt-4">
         © 2025 Shalini Patel. All rights reserved.
       </p>
